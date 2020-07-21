@@ -18,28 +18,33 @@ void LInsert(List * list, int data)
 	(list->dataCount)++;
 }
 
-int LFirst(List * list, int data)
+int LFirst(List * list, int* data)
 {
 	if (!list->dataCount)
 		return false;
 	list->curPos = 0;
-	data = list->arr[0];
+	*data = list->arr[0];
 	return true;
 }
 
-int LNext(List * list, int data)
+int LNext(List * list, int* data)
 {
 	if (list->curPos >= (list->dataCount) - 1)
 		return false;
 	(list->curPos)++;
 
-	data = list->arr[list->curPos];
+	*data = list->arr[list->curPos];
 	return true;
 }
 
+//삭제후 데이터 이동
 int LRemove(List * list)
 {
-	return 0;
+	int rPos = list->curPos;
+	int rData = list->arr[rPos];
+
+
+	
 }
 
 int LCount(List * list)
