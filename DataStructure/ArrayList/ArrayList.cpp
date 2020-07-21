@@ -57,3 +57,28 @@ int LCount(List * list)
 {
 	return list->dataCount;
 }
+
+void SetPoint(Point * pPos, int xPos, int yPos)
+{
+	Point* newPoint;
+	newPoint->x = xPos;
+	newPoint->y = yPos;
+	pPos = newPoint;
+}
+
+void ShowPointPos(Point * pPos)
+{
+	printf("X ÁÂÇ¥ : %d, Y ÁÂÇ¥ : %d\n", pPos->x, pPos->y);
+}
+
+int PointComp(Point * pos1, Point * pos2)
+{
+	if (pos1->x == pos2->x && pos1->y == pos2->y)
+		return 0;
+	else if (pos1->x == pos2->x)
+		return 1;
+	else if (pos1->y == pos2->y)
+		return 2;
+	else
+		return -1;
+}

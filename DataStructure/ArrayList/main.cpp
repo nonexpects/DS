@@ -18,12 +18,12 @@ int main(void)
 
 	printf("현재 데이터 수 : %d\n", LCount(&list));
 
-	if (LFirst(&list, data))
+	if (LFirst(&list, &data))
 	{
-		printf("%d", data);
-		if (LNext(&list, data))
+		printf("First 데이터 : %d\n", data);
+		if (LNext(&list, &data))
 		{
-			printf("%d", data);
+			printf("Next 데이터 : %d\n", data);
 		}
 	}
 
