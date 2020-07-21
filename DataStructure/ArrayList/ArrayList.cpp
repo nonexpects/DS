@@ -37,17 +37,23 @@ int LNext(List * list, int* data)
 	return true;
 }
 
-//삭제후 데이터 이동
+//배열 당긴 후 데이터 반환.
 int LRemove(List * list)
 {
 	int rPos = list->curPos;
 	int rData = list->arr[rPos];
 
+	for (int i = rPos; i < list->dataCount - 1; i++)
+	{
+		list->arr[i] = list->arr[i + 1];
+	}
+	(list->curPos)--;
+	(list->dataCount)--;
 
-	
+	return rData;
 }
 
 int LCount(List * list)
 {
-	return 0;
+	return list->dataCount;
 }
