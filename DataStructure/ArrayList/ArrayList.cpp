@@ -6,7 +6,7 @@ void ListInit(List* list)
 	(list->curPos) = -1;	//아무 위치도 가리키지 않음
 }
 
-void LInsert(List * list, int data)
+void LInsert(List * list, LData data)
 {
 	if (list->dataCount > LENGTH)
 	{
@@ -18,7 +18,7 @@ void LInsert(List * list, int data)
 	(list->dataCount)++;
 }
 
-int LFirst(List * list, int* data)
+int LFirst(List * list, LData * data)
 {
 	if (!list->dataCount)
 		return false;
@@ -27,7 +27,7 @@ int LFirst(List * list, int* data)
 	return true;
 }
 
-int LNext(List * list, int* data)
+int LNext(List * list, LData * data)
 {
 	if (list->curPos >= (list->dataCount) - 1)
 		return false;
@@ -38,10 +38,10 @@ int LNext(List * list, int* data)
 }
 
 //배열 당긴 후 데이터 반환.
-int LRemove(List * list)
+LData LRemove(List * list)
 {
 	int rPos = list->curPos;
-	int rData = list->arr[rPos];
+	LData rData = list->arr[rPos];
 
 	for (int i = rPos; i < list->dataCount - 1; i++)
 	{
@@ -60,10 +60,8 @@ int LCount(List * list)
 
 void SetPoint(Point * pPos, int xPos, int yPos)
 {
-	Point* newPoint;
-	newPoint->x = xPos;
-	newPoint->y = yPos;
-	pPos = newPoint;
+	pPos->x = xPos;
+	pPos->y = yPos;
 }
 
 void ShowPointPos(Point * pPos)
@@ -73,12 +71,27 @@ void ShowPointPos(Point * pPos)
 
 int PointComp(Point * pos1, Point * pos2)
 {
+	//x, y값 둘 다 같으면 0
 	if (pos1->x == pos2->x && pos1->y == pos2->y)
 		return 0;
+	//x값이 같으면 1
 	else if (pos1->x == pos2->x)
 		return 1;
+	//y값이 같으면 2
 	else if (pos1->y == pos2->y)
 		return 2;
+	//두 값 다 다르면 -1
 	else
 		return -1;
+}
+
+void CheckAllData(List * list)
+{
+	//현재 데이터들 확인
+	printf("현재 데이터 수 : %d\n", list->dataCount);
+	
+	for (int i = 0; i < list->dataCount; i++)
+	{
+		printf("X 좌표 : %d, Y 좌표 : %d\n", list->arr[i]->x, list->arr[i]->y);
+	}
 }
